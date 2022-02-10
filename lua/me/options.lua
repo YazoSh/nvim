@@ -2,6 +2,8 @@
 
 local options = {
 	number = true,
+	numberwidth = 2,
+	signcolumn = "yes",
 	tabstop = 4,
 	shiftwidth = 4,
 	softtabstop = 4,
@@ -9,7 +11,6 @@ local options = {
 	scrolloff = 8,
 	sidescrolloff = 8,
 	wrap = false,
-	numberwidth = 4,
 	cursorline = true,
 	undofile = true,
 	termguicolors = true,
