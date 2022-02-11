@@ -8,6 +8,16 @@ local actions = require "telescope.actions"
 telescope.setup {
   defaults = {
 
+	vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+	},
+
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },
@@ -83,6 +93,9 @@ telescope.setup {
     --   picker_config_key = value,
     --   ...
     -- }
+	find_files = {
+			find_command = {"rg", "--files"},
+		},
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
   },
@@ -94,3 +107,5 @@ telescope.setup {
     -- please take a look at the readme of the extension you want to configure
   },
 }
+
+
