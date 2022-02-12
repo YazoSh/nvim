@@ -72,3 +72,6 @@ keymap("n", "<leader>g", "<cmd>Telescope live_grep<cr>", opts)
 -- Gitsign
 keymap("n", "<leader>v", "<cmd>Gitsign preview_hunk<cr>", opts)
 keymap("n", "<leader>b", "<cmd>Gitsign blame_line<cr>", opts)
+
+-- LSP symbols outline
+keymap("n", "<leader>s", "<cmd>SymbolsOutline<cr>", opts)
