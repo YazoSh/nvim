@@ -56,7 +56,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
   use "glepnir/dashboard-nvim"
-  use "rmagatti/auto-session"
+  use "windwp/nvim-ts-autotag"
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine

@@ -14,7 +14,7 @@ g.dashboard_custom_header = {
 }
 
 g.dashboard_custom_section = {
-a = { description = { "   Last Session " }, command = "SessionLoad" },
+a = { description = { " פּ  File Tree    " }, command = "NvimTreeToggle" },
 b = { description = { "   Find File    " }, command = "Telescope find_files" },
 c = { description = { "   Recents      " }, command = "Telescope oldfiles" },
 d = { description = { "   Find Word    " }, command = "Telescope live_grep" },
