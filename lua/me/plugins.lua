@@ -42,8 +42,11 @@ return packer.startup(function(use)
   use "numToStr/Comment.nvim"
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "lewis6991/gitsigns.nvim"
-  use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
+  use "kyazdani42/nvim-web-devicons"
+  use {
+		"kyazdani42/nvim-tree.lua",
+		commit = '2e1f82d' -- New commit is bugged
+	}
   use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
 
