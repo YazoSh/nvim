@@ -17,6 +17,10 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
+-- Navigation
+keymap("n", "<S-j>", "10j", opts);
+keymap("n", "<S-k>", "10k", opts);
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
