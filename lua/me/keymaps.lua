@@ -18,8 +18,8 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Navigation
-keymap("n", "<S-j>", "10j", opts);
-keymap("n", "<S-k>", "10k", opts);
+keymap("n", "<S-j>", "10j", opts)
+keymap("n", "<S-k>", "10k", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -64,7 +64,12 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Telescope
 -- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap(
+	"n",
+	"<leader>h",
+	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+	opts
+)
 keymap("n", "<leader>g", "<cmd>Telescope live_grep<cr>", opts)
 
 -- Gitsign
@@ -73,3 +78,6 @@ keymap("n", "<leader>b", "<cmd>Gitsign blame_line<cr>", opts)
 
 -- LSP symbols outline
 keymap("n", "<leader>s", "<cmd>SymbolsOutline<cr>", opts)
+
+-- Formatting
+keymap("n", "<leader>f", "<cmd>Format<cr>", opts)

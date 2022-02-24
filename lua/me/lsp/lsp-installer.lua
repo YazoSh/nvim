@@ -28,6 +28,11 @@ lsp_installer.on_server_ready(function(server)
 	 	opts = vim.tbl_deep_extend("force", pyright_opts, opts)
 	 end
 
+	if server.name == "omnisharp" then
+		local omnisharp_opts = require("me.lsp.settings.omnisharp")
+		opts = vim.tbl_deep_extend("force", omnisharp_opts, opts)
+	end
+
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 	server:setup(opts)

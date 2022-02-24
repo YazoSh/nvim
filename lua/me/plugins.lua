@@ -69,7 +69,9 @@ return packer.startup(function(use)
     -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use 'simrat39/symbols-outline.nvim'
+  use "simrat39/symbols-outline.nvim"
+  use "hrsh7th/nvim-compe"
+  use "jose-elias-alvarez/null-ls.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
