@@ -16,5 +16,7 @@ null_ls.setup({
 		formatting.black,
 		formatting.stylua,
 		formatting.astyle,
+		-- formatting.eslint,
+		diagnostics.eslint
 	},
 })
