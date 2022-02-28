@@ -5,6 +5,7 @@ local options = {
 	numberwidth = 2,
 	signcolumn = "yes",
 	expandtab = true,
+	showmode = false,
 	tabstop = 4,
 	shiftwidth = 4,
 	softtabstop = 4,
@@ -16,7 +17,7 @@ local options = {
 	undofile = true,
 	termguicolors = true,
 	splitright = true,
-	splitbelow =  true,
+	splitbelow = true,
 	smartindent = true,
 	ignorecase = true,
 	smartcase = true,
@@ -25,11 +26,11 @@ local options = {
 	hlsearch = true,
 	fileencoding = "utf-8",
 	conceallevel = 0,
-	completeopt = {"menuone", "noselect"},
-	cmdheight = 2,
+	completeopt = { "menuone", "noselect" },
+	cmdheight = 1,
 }
 
-vim.cmd [[set iskeyword+=-]]
+vim.cmd([[set iskeyword+=-]])
 
 for opt, v in pairs(options) do
 	vim.opt[opt] = v

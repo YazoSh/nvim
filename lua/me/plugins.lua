@@ -47,6 +47,7 @@ return packer.startup(function(use)
 	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
     use("lukas-reineke/indent-blankline.nvim")
+    use("nvim-lualine/lualine.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
