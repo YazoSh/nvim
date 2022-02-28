@@ -9,7 +9,10 @@ local colors = {
 	red = "#Ec5f67",
 }
 
-local list_registered_providers_names = function(filetype)
+-- Helper functions
+--
+
+local function list_registered_providers_names(filetype)
 	local s = require("null-ls.sources")
 	local available_sources = s.get_available(filetype)
 	local registered = {}
@@ -22,26 +25,29 @@ local list_registered_providers_names = function(filetype)
 	return registered
 end
 
-local list_registered_formatters = function(filetype)
+local function list_registered_formatters (filetype)
 	local null_ls_methods = require("null-ls.methods")
 	local formatter_method = null_ls_methods.internal["FORMATTING"]
 	local registered_providers = list_registered_providers_names(filetype)
 	return registered_providers[formatter_method] or {}
 end
 
-local list_registered_linters = function(filetype)
+local function list_registered_linters(filetype)
 	local null_ls_methods = require("null-ls.methods")
 	local formatter_method = null_ls_methods.internal["DIAGNOSTICS"]
 	local registered_providers = list_registered_providers_names(filetype)
 	return registered_providers[formatter_method] or {}
 end
 
+--
+--
+
 local conditions = {
 	buffer_not_empty = function()
 		return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
 	end,
 	hide_in_width = function()
-		return vim.fn.winwidth(0) > 80
+		return vim.fn.winwidth(0) > 95
 	end,
 	check_git_workspace = function()
 		local filepath = vim.fn.expand("%:p:h")
@@ -52,7 +58,7 @@ local conditions = {
 
 local config = {
 	options = {
-        theme = "ayu_dark",
+		theme = "ayu_dark",
 		disabled_filetypes = { "alpha", "NvimTree", "neo-tree", "dashboard", "Outline" },
 		component_separators = "",
 		section_separators = "",
@@ -92,7 +98,7 @@ ins_left({
 
 ins_left({
 	"mode",
-    padding = { left = 1, right = 0 },
+	padding = { left = 1, right = 0 },
 })
 
 ins_left({
