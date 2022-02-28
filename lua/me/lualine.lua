@@ -5,9 +5,36 @@ end
 
 local colors = {
 	yellow = "#ecbe7b",
-	cyan = "#008080",
-	red = "#ec5f67",
+	blue = "#36A3D9",
+	red = "#Ec5f67",
 }
+
+local list_registered_providers_names = function(filetype)
+	local s = require("null-ls.sources")
+	local available_sources = s.get_available(filetype)
+	local registered = {}
+	for _, source in ipairs(available_sources) do
+		for method in pairs(source.methods) do
+			registered[method] = registered[method] or {}
+			table.insert(registered[method], source.name)
+		end
+	end
+	return registered
+end
+
+local list_registered_formatters = function(filetype)
+	local null_ls_methods = require("null-ls.methods")
+	local formatter_method = null_ls_methods.internal["FORMATTING"]
+	local registered_providers = list_registered_providers_names(filetype)
+	return registered_providers[formatter_method] or {}
+end
+
+local list_registered_linters = function(filetype)
+	local null_ls_methods = require("null-ls.methods")
+	local formatter_method = null_ls_methods.internal["DIAGNOSTICS"]
+	local registered_providers = list_registered_providers_names(filetype)
+	return registered_providers[formatter_method] or {}
+end
 
 local conditions = {
 	buffer_not_empty = function()
@@ -25,7 +52,8 @@ local conditions = {
 
 local config = {
 	options = {
-		disabled_filetypes = { "NvimTree", "neo-tree", "dashboard", "Outline" },
+        theme = "ayu_dark",
+		disabled_filetypes = { "alpha", "NvimTree", "neo-tree", "dashboard", "Outline" },
 		component_separators = "",
 		section_separators = "",
 	},
@@ -57,14 +85,20 @@ end
 
 ins_left({
 	function()
-		return "▊"
+		return "▊▊"
 	end,
 	padding = { left = 0, right = 0 },
 })
 
 ins_left({
+	"mode",
+    padding = { left = 1, right = 0 },
+})
+
+ins_left({
 	"branch",
 	icon = "",
+	icons_enabled = true,
 	padding = { left = 2, right = 1 },
 })
 
@@ -76,7 +110,12 @@ ins_left({
 
 ins_left({
 	"diff",
-	symbols = { added = " ", modified = "柳", removed = " " },
+	symbols = { added = " ", modified = "柳 ", removed = " " },
+	diff_color = {
+		added = { fg = colors.green },
+		modified = { fg = colors.blue },
+		removed = { fg = colors.red },
+	},
 	cond = conditions.hide_in_width,
 	padding = { left = 2, right = 1 },
 })
@@ -155,17 +194,16 @@ ins_right({
 			end
 		end
 
-		local formatters = require("core.utils")
-		local supported_formatters = formatters.list_registered_formatters(buf_ft)
+		local supported_formatters = list_registered_formatters(buf_ft)
 		vim.list_extend(buf_client_names, supported_formatters)
 
-		local linters = require("core.utils")
-		local supported_linters = linters.list_registered_linters(buf_ft)
+		local supported_linters = list_registered_linters(buf_ft)
 		vim.list_extend(buf_client_names, supported_linters)
 
 		return table.concat(buf_client_names, ", ")
 	end,
 	icon = " ",
+	icons_enabled = true,
 	color = { gui = "none" },
 	padding = { left = 0, right = 1 },
 	cond = conditions.hide_in_width,
@@ -195,20 +233,7 @@ ins_right({
 
 ins_right({
 	function()
-		local current_line = vim.fn.line(".")
-		local total_lines = vim.fn.line("$")
-		local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
-		local line_ratio = current_line / total_lines
-		local index = math.ceil(line_ratio * #chars)
-		return chars[index]
-	end,
-	padding = { left = 1, right = 1 },
-	cond = nil,
-})
-
-ins_right({
-	function()
-		return "▊"
+		return "▊▊"
 	end,
 	padding = { left = 1, right = 0 },
 })
