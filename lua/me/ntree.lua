@@ -1,8 +1,6 @@
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 
-vim.g.nvim_tree_indent_markers = 1
-
 vim.g.nvim_tree_icons = {
 	default = "",
 	symlink = "",
@@ -119,13 +117,14 @@ nvim_tree.setup({
 			},
 		},
 	},
-	git_hl = 1,
-	root_folder_modifier = ":t",
-	show_icons = {
-		git = 1,
-		folders = 1,
-		files = 1,
-		folder_arrows = 1,
-		tree_width = 30,
-	},
+    renderer = {
+        indent_markers = {
+          enable = false,
+          icons = {
+            corner = "└ ",
+            edge = "│ ",
+            none = "  ",
+          },
+        }
+    }
 })
