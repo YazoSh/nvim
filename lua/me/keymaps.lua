@@ -80,5 +80,5 @@ keymap("n", "<leader>b", "<cmd>Gitsign blame_line<cr>", opts)
 keymap("n", "<leader>s", "<cmd>SymbolsOutline<cr>", opts)
 
 -- Formatting
-vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
+vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 keymap("n", "<leader>f", "<cmd>Format<cr>", opts)
